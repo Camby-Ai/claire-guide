@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Claire Setup Guide &middot; CAMBY Ai</title>
+<meta name="description" content="Claire is marketing. Set her up on Hermes Agent, answer who it is for and what change they want, and get one useful email drafted each week for people who opted in.">
+<meta name="theme-color" content="#0B0D12">
+<link rel="canonical" href="https://claire.mikecamby.com">
+<link rel="icon" href="camby-ai-logo-web.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="CAMBY Ai">
+<meta property="og:title" content="Claire Setup Guide">
+<meta property="og:description" content="Claire is marketing. Set her up on Hermes Agent, answer who it is for and what change they want, and get one useful email drafted each week for people who opted in.">
+<meta property="og:url" content="https://claire.mikecamby.com">
+<meta property="og:image" content="claire-avatar.jpg">
+<meta property="og:image:alt" content="Claire, marketing at CAMBY Ai">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="1200">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Claire Setup Guide">
+<meta name="twitter:description" content="Claire is marketing. Set her up on Hermes Agent, answer who it is for and what change they want, and get one useful email drafted each week for people who opted in.">
+<meta name="twitter:image" content="claire-avatar.jpg">
+<meta name="twitter:image:alt" content="Claire, marketing at CAMBY Ai">
+<style>
+  /* Layout: single column, left-aligned. Gold hairline rules separate numbered
+     sections, mirroring the CAMBY Ai site's "01 / SECTION" structure. */
+  :root {
+    --bg:        #0B0D12;
+    --panel:     #12161E;
+    --panel-2:   #171C26;
+    --line:      #2A2E3A;
+    --line-gold: #4A3B1E;
+    --gold:      #D8AA57;
+    --gold-dim:  #8A6E38;
+    --text:      #F7F3EB;
+    --muted:     #A49B89;
+    --ink:       #17191D;
+    --font-head: Georgia, "Times New Roman", serif;
+    --font-body: Arial, Helvetica, sans-serif;
+    --font-mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+
+  h1, h2, h3, h4 { font-family: var(--font-head); font-weight: normal; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(38px, 7vw, 68px); line-height: 1.05; letter-spacing: -0.015em; }
+  h2 { font-size: clamp(27px, 4.4vw, 40px); line-height: 1.15; letter-spacing: -0.01em; }
+  h3 { font-size: clamp(19px, 2.4vw, 23px); line-height: 1.3; }
+  h1 em, h2 em { color: var(--gold); font-style: italic; }
+  p { margin: 0; }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0;
+  }
+  .eyebrow .sep { color: var(--gold-dim); }
+
+  /* ---------- masthead ---------- */
+  .masthead {
+    border-bottom: 1px solid var(--line);
+    background: var(--panel);
+  }
+  .masthead .wrap {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 16px; flex-wrap: wrap; padding-block: 18px;
+  }
+  .masthead img { width: 168px; height: auto; display: block; }
+  .masthead .tag {
+    font-size: 11px; letter-spacing: 0.19em; text-transform: uppercase;
+    color: var(--muted); border-left: 1px solid var(--line-gold); padding-left: 14px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero .wrap { padding-block: clamp(40px, 7vw, 76px); }
+  .hero-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: center; }
+  .hero-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+  .lede { font-size: clamp(16px, 1.9vw, 18.5px); color: var(--muted); max-width: 54ch; }
+  .lede strong { color: var(--text); font-weight: normal; }
+
+  .portrait { position: relative; min-width: 0; }
+  .portrait img { width: 100%; max-width: 100%; height: auto; display: block; border: 1px solid var(--line-gold); }
+  .portrait figcaption {
+    margin-top: 12px; font-size: 11px; letter-spacing: 0.17em;
+    text-transform: uppercase; color: var(--muted);
+  }
+  .portrait figcaption b { color: var(--gold); font-weight: normal; }
+
+  .facts { display: flex; flex-wrap: wrap; gap: 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .fact { flex: 1 1 150px; min-width: 0; padding: 16px 18px 16px 0; }
+  .fact + .fact { border-left: 1px solid var(--line); padding-left: 18px; }
+  .fact dt { font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--muted); }
+  .fact dd { margin: 5px 0 0; font-family: var(--font-head); font-size: 21px; color: var(--gold); }
+
+  /* ---------- sections ---------- */
+  section { border-top: 1px solid var(--line); }
+  section .wrap { padding-block: clamp(36px, 5.5vw, 62px); }
+  .sec-head { display: flex; flex-direction: column; gap: 10px; margin-bottom: 26px; }
+  .sec-body { display: flex; flex-direction: column; gap: 20px; max-width: 68ch; }
+  .sec-body p { color: var(--muted); }
+  .sec-body p strong { color: var(--text); font-weight: bold; }
+
+  /* ---------- timeline table ---------- */
+  .scroll-x { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; min-width: 440px; font-size: 15px; }
+  caption {
+    text-align: left; font-size: 11px; letter-spacing: 0.17em; text-transform: uppercase;
+    color: var(--muted); padding-bottom: 12px;
+  }
+  th, td { text-align: left; padding: 13px 16px 13px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { font-family: var(--font-body); font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--gold); font-weight: normal; }
+  td.when { color: var(--gold); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  td.what { color: var(--text); }
+  td.note { color: var(--muted); font-size: 14px; }
+  tr.heavy td.when { color: var(--text); background: var(--panel-2); padding-left: 12px; }
+
+  /* ---------- steps ---------- */
+  .step { display: grid; grid-template-columns: 62px 1fr; gap: 0 22px; padding-block: 30px; border-top: 1px solid var(--line); }
+  .step:first-of-type { border-top: 0; }
+  .step-num { font-family: var(--font-head); font-size: 34px; color: var(--gold-dim); line-height: 1; padding-top: 4px; font-variant-numeric: tabular-nums; }
+  .step-body { min-width: 0; display: flex; flex-direction: column; gap: 14px; }
+  .step-body > p { color: var(--muted); max-width: 62ch; }
+  .step-body h3 em { color: var(--gold); font-style: italic; }
+
+  ul.ticks { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
+  ul.ticks li { position: relative; padding-left: 20px; color: var(--muted); max-width: 62ch; }
+  ul.ticks li::before { content: ""; position: absolute; left: 0; top: 10px; width: 8px; height: 1px; background: var(--gold); }
+  ul.ticks li b { color: var(--text); font-weight: bold; }
+
+  /* ---------- code ---------- */
+  .code { border: 1px solid var(--line); background: var(--panel); }
+  .code-top {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 9px 12px; border-bottom: 1px solid var(--line); background: var(--panel-2);
+  }
+  .code-top span { font-size: 10.5px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .copy {
+    font-family: var(--font-body); font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase;
+    background: transparent; color: var(--gold); border: 1px solid var(--line-gold);
+    padding: 5px 11px; cursor: pointer;
+  }
+  .copy:hover { background: var(--gold); color: var(--ink); border-color: var(--gold); }
+  .copy:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  pre { margin: 0; padding: 14px; overflow-x: auto; font-family: var(--font-mono); font-size: 13.5px; line-height: 1.75; color: var(--text); }
+  pre .c { color: var(--gold-dim); }
+  code { font-family: var(--font-mono); font-size: 0.92em; color: var(--gold); }
+
+  /* ---------- callout ---------- */
+  .callout { border-left: 2px solid var(--gold); background: var(--panel); padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+  .callout .k { font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--gold); }
+  .callout p { color: var(--muted); max-width: 62ch; }
+
+  /* ---------- guardrails ---------- */
+  .rails { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  .rail { background: var(--bg); padding: 20px; display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+  .rail dt { font-family: var(--font-head); font-size: 18px; color: var(--text); }
+  .rail dd { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .rail .val { color: var(--gold); font-family: var(--font-mono); font-size: 13px; }
+
+  /* ---------- cta ---------- */
+  .cta { background: var(--panel); border-top: 1px solid var(--line-gold); }
+  .cta .wrap { padding-block: clamp(40px, 6vw, 68px); display: flex; flex-direction: column; gap: 24px; }
+  .cta-grid { display: grid; grid-template-columns: 1.3fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: start; }
+  .contact { border: 1px solid var(--line-gold); padding: 22px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .contact .row { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+  .contact .row dt { font-size: 10.5px; letter-spacing: 0.17em; text-transform: uppercase; color: var(--muted); }
+  .contact .row dd { margin: 0; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; min-width: 0; }
+  .contact .v { font-family: var(--font-mono); font-size: 14.5px; color: var(--gold); word-break: break-all; }
+  a { color: var(--gold); text-decoration: none; border-bottom: 1px solid var(--line-gold); }
+  a:hover { border-bottom-color: var(--gold); }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* ---------- footer ---------- */
+  footer { border-top: 1px solid var(--line); }
+  footer .wrap { padding-block: 34px; display: flex; flex-direction: column; gap: 18px; }
+  footer img.sig { width: 150px; height: auto; opacity: 0.85; }
+  footer p { font-size: 13.5px; color: var(--muted); max-width: 70ch; }
+  .fine { font-size: 12px; color: var(--gold-dim); }
+
+  @media (max-width: 760px) {
+    .hero-grid, .cta-grid { grid-template-columns: 1fr; }
+    .portrait { max-width: 340px; }
+    .step { grid-template-columns: 1fr; gap: 12px; }
+    .step-num { font-size: 26px; padding-top: 0; }
+    .fact + .fact { border-left: 0; padding-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <img src="camby-ai-logo-web.png" alt="CAMBY Ai">
+    <div class="tag">Claire &middot; Setup Guide</div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">00 <span class="sep">/</span> Marketing</p>
+        <h1>The software is free.<br><em>The one question is the work.</em></h1>
+<p class="lede">Claire is marketing. Most small business marketing tries to talk to everybody and ends up heard by nobody. Claire starts the other way round, with one question: who is this for, and what change do they want? From that answer she writes the story your customers will repeat to each other, the positioning, the offer, what the website should say and what the email list promises. Then she drafts one useful email at a time for people who asked to hear from you. This guide sets her up on Hermes Agent, a free and open source agent from Nous Research that runs on your own machine.</p>
+<p class="lede">The software is free. The model behind it is not always free, and the real work is answering that one question honestly, once, in one place.</p>
+<p class="fine"><strong>Checked on 2026-11-21.</strong> Commands and limits change. Sources are at the bottom.</p>
+<div class="callout">
+  <span class="k">How this guide was made:</span>
+  <p>every command below was copied from the Hermes Agent documentation on that date. We have not test-run them on a fresh machine. If a step does not behave the way it says, see "If a step breaks" near the end: your AI can patch it for you in a minute.</p>
+</div>
+<div class="callout">
+  <span class="k">Claire drafts. You send.</span>
+  <p>In this guide she never emails anyone and never touches your list. Every email she writes waits for you to read it and send it yourself, to people who opted in.</p>
+</div>
+      </div>
+      <figure class="portrait">
+        <img src="claire-avatar.jpg" alt="Claire, marketing at CAMBY Ai" style="aspect-ratio:502 / 900; object-fit:cover; object-position:46% center;">
+        <figcaption><b>Claire</b> &middot; Make it worth noticing</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">01 <span class="sep">/</span> Before you start</p>
+      <h2>The honest timeline.<br><em>The slow part is answering it honestly.</em></h2>
+    </div>
+    <div class="sec-body">
+      <h3>What Claire does</h3>
+<ul class="ticks">
+  <li>Asks who this is for and what change they want, and keeps the answer in one file she works from every time.</li>
+  <li>Writes the story: the positioning, the offer, what the website should say, what the email list promises, and why you are worth talking about.</li>
+  <li>Drafts one email a week for people who opted in. Each one teaches one thing, makes one ask, and has to be worth opening on its own.</li>
+  <li>Checks every draft against your story, so a claim you never made does not reach your list.</li>
+  <li>Writes a short note for whoever sells when a reply sounds like a warm lead, and a two line version of the week's story for whoever runs your social.</li>
+  <li>Does not send, buy a list, write to people who did not opt in, or invent a client, a result, a review or a price. You decide what goes out.</li>
+</ul>
+    </div>
+    <div class="step-body" style="margin-top:26px">
+<div class="scroll-x">
+  <table>
+    <caption>What you need before you start</caption>
+    <thead>
+      <tr><th scope="col">You need</th><th scope="col">Why</th><th scope="col">Cost</th><th scope="col">Checked</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="what">A computer that stays on: macOS, Linux, Windows or WSL2</td>
+        <td class="note">The weekly draft only runs while Hermes' gateway is running</td>
+        <td class="note">Yours already</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">Git and curl</td>
+        <td class="note">The installer uses them</td>
+        <td class="note">Free</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">Hermes Agent</td>
+        <td class="note">Runs Claire</td>
+        <td class="note">Free, MIT licence</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">A model with at least 64,000 tokens of context</td>
+        <td class="note">Hermes rejects smaller models at startup</td>
+        <td class="note">Depends on the provider you pick. Not measured here</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">An honest answer to "who is this for?"</td>
+        <td class="note">Everything she writes starts from it</td>
+        <td class="note">Yours already</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">A list of people who opted in, however short</td>
+        <td class="note">She writes for people who asked to hear from you</td>
+        <td class="note">Yours already</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+      <tr>
+        <td class="what">Telegram (optional)</td>
+        <td class="note">To get told on your phone that the weekly draft is ready</td>
+        <td class="note">Free</td>
+        <td class="when">2026-11-21</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>On a brand new install the setup wizard may offer a "Free, start now" choice that needs no account. The Hermes docs say it is shown only when it is available, so do not plan around it.</p>
+<p>One thing to decide first: whatever model you choose will read what you put in her folder. She does not need your list to write a good email. Keep names and email addresses out of her folder, and tell her about your audience in words.</p>
+<p>Email has rules. In the United States the FTC's CAN-SPAM guide lists what every commercial email has to do, including "Tell recipients where you're located" and "Tell recipients how to opt out of receiving future marketing email from you", and it says opt-out requests must be honored within 10 business days (read 2026-11-22, link in Sources). Other countries have their own rules. Claire is not a lawyer and neither are we: check the rules where your readers live.</p>
+    </div>
+    <div class="step-body" style="margin-top:26px">
+<div class="scroll-x">
+  <table>
+    <caption>The honest timeline</caption>
+    <thead>
+      <tr><th scope="col">When</th><th scope="col">What</th><th scope="col">Your time</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="when">Day 1</td>
+        <td class="what">Install Hermes and get one normal chat working</td>
+        <td class="note">The Hermes docs say under 5 minutes. Allow 30</td>
+      </tr>
+      <tr>
+        <td class="when">Day 1</td>
+        <td class="what">Create Claire and give her a desk folder</td>
+        <td class="note">20 minutes</td>
+      </tr>
+      <tr>
+        <td class="when">Day 1</td>
+        <td class="what">Answer the one question in <code>audience.md</code></td>
+        <td class="note">1 hour. This is the part that decides everything</td>
+      </tr>
+      <tr>
+        <td class="when">Day 2</td>
+        <td class="what">Have her write the story, and correct it</td>
+        <td class="note">45 minutes</td>
+      </tr>
+      <tr>
+        <td class="when">Day 2</td>
+        <td class="what">Turn on the weekly draft</td>
+        <td class="note">20 minutes</td>
+      </tr>
+      <tr>
+        <td class="when">Week 1</td>
+        <td class="what">Read, fix and send the first email yourself</td>
+        <td class="note">30 minutes</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<p>The slow part is not the install. It is choosing who you are for, which means choosing who you are not for. Most businesses skip that and write for everyone. Once it is written down, she can hold every email to it.</p>
+<div class="callout">
+  <span class="k">Three limits to know before you start:</span>
+  <p>She only knows your audience from what you write in <code>audience.md</code>. A vague answer gets vague emails.</p>
+  <p>She does not connect to an email tool, a website builder or a CRM in this guide. She writes the words and you put them where they go.</p>
+  <p>She can make an email useful. She cannot make people opt in. That takes something worth signing up for, which is yours to offer.</p>
+</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">02 <span class="sep">/</span> The build</p>
+      <h2>Seven steps.<br><em>In this order.</em></h2>
+    </div>
+
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <h3>Install Hermes and get one chat working</h3>
+<p>Do not add anything else until a plain conversation works. The Hermes quickstart is blunt about this, and it is right.</p>
+<p>On macOS and Windows the Hermes docs recommend the Hermes Desktop installer from <a href="https://hermes-agent.nousresearch.com/">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr></a>. For a command line only install on macOS, Linux or WSL2:</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash">Copy</button></div>
+<pre>curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash</pre>
+</div>
+<p>Reload your shell, pick a model, and start a chat:</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="source ~/.zshrc&#10;hermes setup&#10;hermes">Copy</button></div>
+<pre>source ~/.zshrc
+hermes setup
+hermes</pre>
+</div>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>a welcome banner naming your model, and a reply to a simple question. If replies are empty or broken, run <code>hermes model</code> again and confirm the provider, the model and the login. If anything else looks off, run <code>hermes doctor</code>.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <h3>Create Claire</h3>
+<p>Every agent in Hermes gets its own profile: its own settings, memory and identity. Never point two agents at the same profile.</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="hermes profile create claire --description &quot;Marketing. Starts from who this is for and what change they want, writes the story, positioning, offer, website words and email list promise, and drafts one useful email a week for people who opted in. Never sends, never writes to a cold list, never invents a client, result or price. The owner sends.&quot;">Copy</button></div>
+<pre>hermes profile create claire --description "Marketing. Starts from who this is for and what change they want, writes the story, positioning, offer, website words and email list promise, and drafts one useful email a week for people who opted in. Never sends, never writes to a cold list, never invents a client, result or price. The owner sends."</pre>
+</div>
+<p>Creating the profile also creates a <code>claire</code> command. Check it:</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="claire chat">Copy</button></div>
+<pre>claire chat</pre>
+</div>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>the same kind of chat as step 1, now running as the <code>claire</code> profile.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <h3>Give Claire her identity</h3>
+<p>In Hermes, who an agent is lives in a file called <code>SOUL.md</code> inside that agent's home. For a profile named <code>claire</code> that is:</p>
+<div class="code">
+  <div class="code-top"><span>~/.hermes/profiles/claire/SOUL.md</span><button class="copy" type="button" data-copy="~/.hermes/profiles/claire/SOUL.md">Copy</button></div>
+<pre>~/.hermes/profiles/claire/SOUL.md</pre>
+</div>
+<p>Hermes creates a starter file there. Replace its contents with the text in "Claire's instructions" below. Keep it about who she is and how she talks. Your audience and your emails go in different files, in the next step.</p>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>after starting a new <code>claire chat</code>, she introduces herself as your marketer when asked who she is.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <h3>Build her desk: the rules, the audience and the email template</h3>
+<p>This is the step everybody rushes, and it is the one that makes Claire useful.</p>
+<p>Make a folder for her to work from:</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="mkdir -p ~/claire-desk/templates ~/claire-desk/emails">Copy</button></div>
+<pre>mkdir -p ~/claire-desk/templates ~/claire-desk/emails</pre>
+</div>
+<p>Put three files in it. Hermes loads <code>AGENTS.md</code> from the folder you start a chat in, and Claire reads the others as she works.</p>
+<p><code>~/claire-desk/AGENTS.md</code>, the rules:</p>
+<div class="code">
+  <div class="code-top"><span>~/claire-desk/AGENTS.md</span><button class="copy" type="button" data-copy="# How Claire works this desk&#10;&#10;- audience.md is where everything starts: who this is for and what change they want. Read it before you write anything. If it does not answer the question, ask me. Never guess.&#10;- story.md holds the positioning, the offer, what the website should say, what the email list promises, and why we are worth talking about. You write it from audience.md and from what I tell you. I correct it. After that it is the source of truth.&#10;- Write for the smallest audience that matters, the one in audience.md. Do not widen it to reach more people.&#10;- Every email comes from templates/email.md: it teaches one thing, makes one ask, and has to be worth opening even if the reader never buys.&#10;- Emails are for people who opted in. Never write for a bought, scraped or cold list, and never suggest one.&#10;- Every email ends with a plain way to stop getting them and with where the business is located. Leave both as {placeholders} for me to fill.&#10;- Never invent a client, a result, a number, a review, a price or a deadline. If it is not in story.md or I did not say it, write UNKNOWN and ask me once.&#10;- Save each draft in emails/ with the date in the file name. You draft. You never send, schedule or post anything, and you never touch the list. Show the draft to me.&#10;- When a reply I paste in sounds like someone ready to talk, write a three line note for whoever sells: who they are in their own words, what they asked, and what they were last sent. Do not answer for them.&#10;- For each email, add a two line version of the same story that whoever runs social can use, so the email and the posts say one thing.">Copy</button></div>
+<pre># How Claire works this desk
+
+- audience.md is where everything starts: who this is for and what change they want. Read it before you write anything. If it does not answer the question, ask me. Never guess.
+- story.md holds the positioning, the offer, what the website should say, what the email list promises, and why we are worth talking about. You write it from audience.md and from what I tell you. I correct it. After that it is the source of truth.
+- Write for the smallest audience that matters, the one in audience.md. Do not widen it to reach more people.
+- Every email comes from templates/email.md: it teaches one thing, makes one ask, and has to be worth opening even if the reader never buys.
+- Emails are for people who opted in. Never write for a bought, scraped or cold list, and never suggest one.
+- Every email ends with a plain way to stop getting them and with where the business is located. Leave both as {placeholders} for me to fill.
+- Never invent a client, a result, a number, a review, a price or a deadline. If it is not in story.md or I did not say it, write UNKNOWN and ask me once.
+- Save each draft in emails/ with the date in the file name. You draft. You never send, schedule or post anything, and you never touch the list. Show the draft to me.
+- When a reply I paste in sounds like someone ready to talk, write a three line note for whoever sells: who they are in their own words, what they asked, and what they were last sent. Do not answer for them.
+- For each email, add a two line version of the same story that whoever runs social can use, so the email and the posts say one thing.</pre>
+</div>
+<p><code>~/claire-desk/audience.md</code>, the one question. Fill it in yourself:</p>
+<div class="code">
+  <div class="code-top"><span>~/claire-desk/audience.md</span><button class="copy" type="button" data-copy="# Who this is for&#10;&#10;The smallest group of people we can serve really well: {who they are, in plain words}&#10;Where they are: {the place, trade or situation they share}&#10;What they are stuck with today: {in their words, not ours}&#10;The change they want: {what is different for them afterwards}&#10;What they have already tried: {and why it did not work}&#10;What they tell each other about this problem: {the words they actually use}&#10;Who this is not for: {the people we will happily turn away}&#10;&#10;# How they opted in&#10;&#10;Where they signed up: {the form, the event, the purchase}&#10;What we promised them when they did: {exactly what the sign-up said}&#10;How often we said we would write: {weekly, monthly, or UNKNOWN}">Copy</button></div>
+<pre># Who this is for
+
+The smallest group of people we can serve really well: {who they are, in plain words}
+Where they are: {the place, trade or situation they share}
+What they are stuck with today: {in their words, not ours}
+The change they want: {what is different for them afterwards}
+What they have already tried: {and why it did not work}
+What they tell each other about this problem: {the words they actually use}
+Who this is not for: {the people we will happily turn away}
+
+# How they opted in
+
+Where they signed up: {the form, the event, the purchase}
+What we promised them when they did: {exactly what the sign-up said}
+How often we said we would write: {weekly, monthly, or UNKNOWN}</pre>
+</div>
+<p><code>~/claire-desk/templates/email.md</code>, the email template:</p>
+<div class="code">
+  <div class="code-top"><span>~/claire-desk/templates/email.md</span><button class="copy" type="button" data-copy="# Email: {date}&#10;&#10;Subject line: {says what is inside, plainly}&#10;&#10;## The one thing this teaches&#10;{one useful idea the reader can use today, even if they never buy}&#10;&#10;## The email&#10;{short. Written to one person. Their words from audience.md, not ours.}&#10;&#10;## The one ask&#10;{exactly one: reply, read, book or buy. Never two.}&#10;&#10;## Why they will be glad they opened it&#10;{one sentence. If you cannot write it, the email is not ready.}&#10;&#10;## Footer&#10;{how to stop getting these emails}&#10;{where the business is located}&#10;&#10;## For social&#10;{the same story in two lines}">Copy</button></div>
+<pre># Email: {date}
+
+Subject line: {says what is inside, plainly}
+
+## The one thing this teaches
+{one useful idea the reader can use today, even if they never buy}
+
+## The email
+{short. Written to one person. Their words from audience.md, not ours.}
+
+## The one ask
+{exactly one: reply, read, book or buy. Never two.}
+
+## Why they will be glad they opened it
+{one sentence. If you cannot write it, the email is not ready.}
+
+## Footer
+{how to stop getting these emails}
+{where the business is located}
+
+## For social
+{the same story in two lines}</pre>
+</div>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>when you run <code>claire chat</code> from inside <code>~/claire-desk</code> and ask who you are for, she answers from your <code>audience.md</code> and not from her own idea of your market.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">05</div>
+      <div class="step-body">
+        <h3>Write the story</h3>
+<p>Fill in <code>audience.md</code> first. Then, from inside <code>~/claire-desk</code>, run <code>claire chat</code> and send her this:</p>
+<div class="code">
+  <div class="code-top"><span>Send to Claire</span><button class="copy" type="button" data-copy="Read audience.md. Write story.md with five short sections: Positioning (who we are for, who we are not for, and the change we help them make), The offer (what they get and what they do next, with UNKNOWN for anything I have not told you, including price), The website (the headline, three supporting lines and one call to action), The email list (what people get for opting in and how often), and Worth talking about (the one thing a customer would repeat to a friend). Use only what is in audience.md and what I tell you in this chat. Write UNKNOWN wherever you would have to guess, then ask me your questions one at a time.">Copy</button></div>
+<pre>Read audience.md. Write story.md with five short sections: Positioning (who we are for, who we are not for, and the change we help them make), The offer (what they get and what they do next, with UNKNOWN for anything I have not told you, including price), The website (the headline, three supporting lines and one call to action), The email list (what people get for opting in and how often), and Worth talking about (the one thing a customer would repeat to a friend). Use only what is in audience.md and what I tell you in this chat. Write UNKNOWN wherever you would have to guess, then ask me your questions one at a time.</pre>
+</div>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>a <code>story.md</code> that sounds like your customers and not like an advert, with UNKNOWN in every place you have not given her a fact.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">06</div>
+      <div class="step-body">
+        <h3>Schedule the weekly draft</h3>
+<p>Hermes has a built-in scheduler. Give the job Claire's folder so she reads your audience and your story when she runs. The folder must be written as a full path.</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="hermes -p claire cron create &quot;every monday 8am&quot; \&#10;  &quot;Weekly email. Read audience.md, story.md and the last three files in emails/. Draft this week&#x27;s email from templates/email.md: one thing it teaches, one ask, and one sentence on why the reader will be glad they opened it. Do not repeat a lesson from the last three. Use no client, result, number or price that is not in story.md. Save it in emails/ with today&#x27;s date in the file name. Send nothing and contact no one. Reply with the subject line and the one ask, in under 60 words.&quot; \&#10;  --workdir /Users/you/claire-desk \&#10;  --name &quot;Weekly email draft&quot;">Copy</button></div>
+<pre>hermes -p claire cron create "every monday 8am" \
+  "Weekly email. Read audience.md, story.md and the last three files in emails/. Draft this week's email from templates/email.md: one thing it teaches, one ask, and one sentence on why the reader will be glad they opened it. Do not repeat a lesson from the last three. Use no client, result, number or price that is not in story.md. Save it in emails/ with today's date in the file name. Send nothing and contact no one. Reply with the subject line and the one ask, in under 60 words." \
+  --workdir /Users/you/claire-desk \
+  --name "Weekly email draft"</pre>
+</div>
+<p>Schedules run from a gateway, and each profile has its own. Start Claire's, and check that her scheduler is alive:</p>
+<div class="code">
+  <div class="code-top"><span>Terminal</span><button class="copy" type="button" data-copy="claire gateway start&#10;hermes -p claire cron status">Copy</button></div>
+<pre>claire gateway start
+hermes -p claire cron status</pre>
+</div>
+<p><code>claire gateway install</code> keeps it running after a restart.</p>
+<p>By default the reply is saved on your machine. To get it on your phone, connect Telegram first with <code>hermes gateway setup</code>, then create the job with <code>--deliver telegram</code> added.</p>
+<p>One thing to check on your machine: whether your times come out in your own timezone. Hermes reads the schedule in the profile's <code>timezone:</code> setting. Add <code>--timezone America/Los_Angeles</code> (or your zone) to pin it.</p>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>a dated draft in <code>~/claire-desk/emails/</code> the next Monday morning, and nothing sent to anyone.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step">
+      <div class="step-num">07</div>
+      <div class="step-body">
+        <h3>Check an email before it goes out, by hand</h3>
+<p>Before you send anything she wrote, from inside <code>~/claire-desk</code> run <code>claire chat</code> and send her this:</p>
+<div class="code">
+  <div class="code-top"><span>Send to Claire</span><button class="copy" type="button" data-copy="Check the newest file in emails/ against audience.md and story.md. Answer each of these in one line. Is it written for the audience in audience.md and no wider? What is the one thing it teaches? Is there exactly one ask, and what is it? List every claim, client, result, number and price in it, and for each one say where it comes from in story.md or mark it NOT IN THE STORY. Does it match what people were promised when they opted in? Does the footer have a way to stop getting emails and where the business is located? Change nothing.">Copy</button></div>
+<pre>Check the newest file in emails/ against audience.md and story.md. Answer each of these in one line. Is it written for the audience in audience.md and no wider? What is the one thing it teaches? Is there exactly one ask, and what is it? List every claim, client, result, number and price in it, and for each one say where it comes from in story.md or mark it NOT IN THE STORY. Does it match what people were promised when they opted in? Does the footer have a way to stop getting emails and where the business is located? Change nothing.</pre>
+</div>
+<div class="callout">
+  <span class="k">You should see:</span>
+  <p>a short list where every claim is traced to your story or flagged, and the draft untouched.</p>
+</div>
+      </div>
+    </div>
+
+    <div class="step-body" style="margin-top:26px">
+      <h3>Claire's instructions</h3>
+<p>Paste this into <code>~/.hermes/profiles/claire/SOUL.md</code>. Change the parts in braces.</p>
+<div class="code">
+  <div class="code-top"><span>~/.hermes/profiles/claire/SOUL.md</span><button class="copy" type="button" data-copy="# Who you are&#10;&#10;You are Claire. You are marketing for {your business}.&#10;&#10;You do not chase everyone. You start with one question: who is this for, and what change do they want? Everything you write is for those people.&#10;&#10;# How you work&#10;&#10;- You pick the smallest audience that matters and you write for them, not for everybody.&#10;- You build the story they will tell each other: the positioning, the offer, the website, the email list, and why this business is worth talking about.&#10;- You earn permission before you ask for anything. You write only for people who opted in.&#10;- Every email teaches something, makes one ask, and leaves the reader glad they opened it.&#10;- You tell the truth. No invented clients, results, reviews, numbers or prices.&#10;- You draft and your owner sends. You never send, post or touch the list yourself.&#10;- When you do not know, you write UNKNOWN and ask once. You never guess.&#10;&#10;# How you talk&#10;&#10;- A polished storyteller. Smooth, articulate, a little editorial.&#10;- Warm and thoughtful. Never loud, never pushy.&#10;- Plain words and short sentences. The reader&#x27;s words before yours.&#10;- One idea at a time.&#10;- When you ask a question, ask exactly one.">Copy</button></div>
+<pre># Who you are
+
+You are Claire. You are marketing for {your business}.
+
+You do not chase everyone. You start with one question: who is this for, and what change do they want? Everything you write is for those people.
+
+# How you work
+
+- You pick the smallest audience that matters and you write for them, not for everybody.
+- You build the story they will tell each other: the positioning, the offer, the website, the email list, and why this business is worth talking about.
+- You earn permission before you ask for anything. You write only for people who opted in.
+- Every email teaches something, makes one ask, and leaves the reader glad they opened it.
+- You tell the truth. No invented clients, results, reviews, numbers or prices.
+- You draft and your owner sends. You never send, post or touch the list yourself.
+- When you do not know, you write UNKNOWN and ask once. You never guess.
+
+# How you talk
+
+- A polished storyteller. Smooth, articulate, a little editorial.
+- Warm and thoughtful. Never loud, never pushy.
+- Plain words and short sentences. The reader's words before yours.
+- One idea at a time.
+- When you ask a question, ask exactly one.</pre>
+</div>
+<p>This persona was written from Claire's job description for this guide. It is not a copy of the instructions she runs on in our own team.</p>
+    </div>
+
+    <div class="step-body" style="margin-top:26px">
+      <h3>First test</h3>
+<p>Run <code>claire chat</code> from inside <code>~/claire-desk</code> and send her this:</p>
+<div class="code">
+  <div class="code-top"><span>First test</span><button class="copy" type="button" data-copy="Using only audience.md and story.md, tell me in five lines: who we are for, who we are not for, the change they want, the one thing a customer would repeat to a friend, and what people were promised when they opted in. Then list every place the word UNKNOWN still appears in story.md. Use only what is in the files. Change nothing.">Copy</button></div>
+<pre>Using only audience.md and story.md, tell me in five lines: who we are for, who we are not for, the change they want, the one thing a customer would repeat to a friend, and what people were promised when they opted in. Then list every place the word UNKNOWN still appears in story.md. Use only what is in the files. Change nothing.</pre>
+</div>
+<p>A good answer uses your customers' words from <code>audience.md</code>, names who you are not for instead of skipping it, and lists the unknowns instead of filling them.</p>
+<p>If she describes an audience wider than the one you wrote down, or states a result or a price that is not in <code>story.md</code>, tighten the "smallest audience" and "never invent" rules in <code>AGENTS.md</code> and ask her where it came from.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">03 <span class="sep">/</span> When it goes wrong</p>
+      <h2>If a step breaks.<br><em>You do not need us to fix it.</em></h2>
+    </div>
+<div class="scroll-x">
+  <table>
+    <caption>When it goes wrong</caption>
+    <thead>
+      <tr><th scope="col">What you see</th><th scope="col">Why</th><th scope="col">Fix</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="what">Empty or broken replies</td>
+        <td class="note">Model or login is wrong</td>
+        <td class="note"><code>hermes model</code>, then a plain chat before anything else</td>
+      </tr>
+      <tr>
+        <td class="what">She does not know your audience</td>
+        <td class="note">The chat was not started in <code>~/claire-desk</code></td>
+        <td class="note">Start <code>claire chat</code> from that folder</td>
+      </tr>
+      <tr>
+        <td class="what">The emails sound like an advert</td>
+        <td class="note"><code>audience.md</code> is thin, or it is in your words and not your customers'</td>
+        <td class="note">Add what customers actually say to "What they tell each other", and rerun step 5</td>
+      </tr>
+      <tr>
+        <td class="what">An email has two or three asks</td>
+        <td class="note">The template rule is being read loosely</td>
+        <td class="note">Tighten "exactly one ask" in <code>AGENTS.md</code>, and delete the extra asks yourself the first few times</td>
+      </tr>
+      <tr>
+        <td class="what">A claim or number you never gave her</td>
+        <td class="note">She guessed</td>
+        <td class="note">Run step 7, remove it, and tighten the "never invent" rule in <code>AGENTS.md</code> and <code>SOUL.md</code></td>
+      </tr>
+      <tr>
+        <td class="what">The same lesson two weeks running</td>
+        <td class="note">The job is not reading past drafts, or <code>emails/</code> is empty</td>
+        <td class="note">Keep sent drafts in <code>emails/</code>, and check the job's <code>--workdir</code></td>
+      </tr>
+      <tr>
+        <td class="what">No weekly draft</td>
+        <td class="note">Claire's gateway is not running, or the job is missing its folder</td>
+        <td class="note"><code>hermes -p claire cron status</code>, <code>claire gateway start</code>, and recreate the job with <code>--workdir</code></td>
+      </tr>
+      <tr>
+        <td class="what">The draft arrives at the wrong hour</td>
+        <td class="note">The schedule is running in another timezone</td>
+        <td class="note">Recreate the job with <code>--timezone</code> set to your zone</td>
+      </tr>
+      <tr>
+        <td class="what">Anything else</td>
+        <td class="note"></td>
+        <td class="note"><code>hermes doctor</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    <div class="step-body" style="margin-top:26px">
+      <h3>If a step breaks</h3>
+<p>Hermes changes fast, so a command here can drift from what your version expects. You do not need us to fix it. Paste this into Hermes itself, or into Claude or ChatGPT, with the error underneath:</p>
+<div class="code">
+  <div class="code-top"><span>Prompt</span><button class="copy" type="button" data-copy="I am following a setup guide for a marketing agent on Hermes Agent. This step failed. Here is the step, the exact command I ran, and the full error. Check the current Hermes Agent docs at https://hermes-agent.nousresearch.com/docs, tell me what changed, and give me the corrected command.">Copy</button></div>
+<pre>I am following a setup guide for a marketing agent on Hermes Agent. This step failed. Here is the step, the exact command I ran, and the full error. Check the current Hermes Agent docs at https://hermes-agent.nousresearch.com/docs, tell me what changed, and give me the corrected command.</pre>
+</div>
+<p><code>hermes doctor</code> is worth running first. It catches most setup problems on its own.</p>
+    </div>
+    <div class="step-body" style="margin-top:26px">
+      <h3>What it costs to run</h3>
+<ul class="ticks">
+  <li>Hermes Agent: free, MIT licence.</li>
+  <li>The model: billed by whichever provider you choose in <code>hermes model</code>. Every weekly draft and every check is model usage. Not measured here, so no number is given.</li>
+  <li>This guide does not connect to an email tool, a website builder or a CRM. Those bill separately if you add them.</li>
+</ul>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">04 <span class="sep">/</span> If you would rather not</p>
+      <h2>Want it set up<br><em>for you?</em></h2>
+    </div>
+    <div class="cta-grid">
+      <div class="sec-body">
+        <p>Nobody stalls on the install. They stall on saying who it is for.</p>
+<p>CAMBY Ai sets Claire up and runs her for you: <a href="https://mikecamby.com">https:/<wbr>/<wbr>mikecamby.com</a></p>
+      </div>
+      <dl class="contact">
+        <div class="row">
+          <dt>Email</dt>
+          <dd><span class="v" id="v-email">mike@mikecamby.com</span>
+            <button class="copy" type="button" data-copy="mike@mikecamby.com">Copy</button></dd>
+        </div>
+        <div class="row">
+          <dt>Text</dt>
+          <dd><span class="v" id="v-phone">747.441.6578</span>
+            <button class="copy" type="button" data-copy="747.441.6578">Copy</button></dd>
+        </div>
+        <div class="row">
+          <dt>Book a time</dt>
+          <dd><a href="https://cal.com/mikecamby">cal.com/mikecamby</a></dd>
+        </div>
+        <div class="row">
+          <dt>The code</dt>
+          <dd><a href="https://github.com/NousResearch/hermes-agent">github.com/NousResearch/hermes-agent</a></dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <img class="sig" src="camby-signature-web.png" alt="Camby">
+    <h3>Credit</h3>
+<p>Claire runs on <a href="https://github.com/NousResearch/hermes-agent">Hermes Agent</a>, built by Nous Research and released under the MIT licence. Hermes is not ours. This guide is a walkthrough for using it for marketing. Not affiliated with or endorsed by Nous Research, Telegram or the FTC.</p>
+    <h3>Sources</h3>
+<p>Hermes pages read on 2026-11-21 from the Hermes Agent repository and its documentation. The FTC page was read on 2026-11-22.</p>
+<ul class="ticks">
+  <li><a href="https://github.com/NousResearch/hermes-agent">https:/<wbr>/<wbr>github.com/<wbr>NousResearch/<wbr>hermes-agent</a> : install command, first-run commands, licence.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/getting-started/quickstart">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>getting-started/<wbr>quickstart</a> : install paths, <code>hermes setup</code>, the 64,000 token minimum, the "Free, start now" option, <code>hermes doctor</code>.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/profiles">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>profiles</a> : <code>hermes profile create</code>, <code>--description</code>, one profile per agent, the per-profile command.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/personality">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>features/<wbr>personality</a> : <code>SOUL.md</code>, where it lives and what belongs in it.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/which-file-does-what">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>which-file-does-what</a> : <code>SOUL.md</code> versus <code>AGENTS.md</code>.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/features/cron">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>features/<wbr>cron</a> : <code>cron create</code>, "every monday 8am", <code>--workdir</code>, <code>--deliver</code>, <code>--name</code>, <code>--timezone</code>.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/messaging">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>messaging</a> : <code>hermes gateway setup</code>, <code>start</code>, <code>install</code>, <code>status</code>.</li>
+  <li><a href="https://hermes-agent.nousresearch.com/docs/user-guide/multi-profile-gateways">https:/<wbr>/<wbr>hermes-agent.nousresearch.com/<wbr>docs/<wbr>user-guide/<wbr>multi-profile-gateways</a> : one gateway per profile, <code>&lt;profile&gt; gateway start</code>, <code>hermes -p &lt;profile&gt; cron status</code>.</li>
+  <li><a href="https://www.ftc.gov/business-guidance/resources/can-spam-act-compliance-guide-business">https:/<wbr>/<wbr>www.ftc.gov/<wbr>business-guidance/<wbr>resources/<wbr>can-spam-act-compliance-guide-business</a> : the CAN-SPAM requirements quoted above and the 10 business day opt-out window.</li>
+</ul>
+    <p class="fine">CAMBY Ai &middot; AI solutions for local businesses &middot; Las Vegas, Nevada &middot; More revenue. Less costs.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.dataset.copy;
+      if (!text) {
+        var block = btn.closest(".code");
+        var pre = block && block.querySelector("pre");
+        if (!pre) return;
+        text = pre.innerText.replace(/[ \t]*#.*$/gm, "").trim();
+      }
+      var done = function () {
+        var prev = btn.textContent;
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = prev; }, 1400);
+      };
+      try {
+        navigator.clipboard.writeText(text).then(done, function () { select(btn, text); });
+      } catch (e) {
+        select(btn, text);
+      }
+    });
+  });
+
+  function select(btn, text) {
+    var holder = btn.closest(".code") || btn.parentElement;
+    var target = holder && (holder.querySelector("pre") || holder.querySelector(".v"));
+    if (!target) return;
+    var range = document.createRange();
+    range.selectNodeContents(target);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    btn.textContent = "Select and copy";
+    setTimeout(function () { btn.textContent = "Copy"; }, 2200);
+  }
+</script>
+</body>
+</html>
